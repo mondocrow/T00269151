@@ -18,7 +18,7 @@ public class physicsInteractionScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
 
-            rb.AddForce(transform.up * 10, ForceMode.Impulse);
+            rb.AddForce(transform.up * 10, ForceMode.VelocityChange);
         }
     }
 

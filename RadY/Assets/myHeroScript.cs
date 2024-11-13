@@ -7,6 +7,7 @@ public class myHeroScript : MonoBehaviour
 {
     float runningSpeed = 3f;
     float turningSpeed = 45f;
+    int coinsCollected = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,10 +41,15 @@ public class myHeroScript : MonoBehaviour
         {
             transform.position += runningSpeed * transform.right * Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            transform.position += runningSpeed * transform.up * Time.deltaTime;
-        }
+    }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        CoinScript coin = collision.gameObject.GetComponent<CoinScript>();
+        if (coin != null)
+        {
+            coin.Collect();
+            coinsCollected += 1;
+        }
     }
 }

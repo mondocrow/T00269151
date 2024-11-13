@@ -5,53 +5,35 @@ using UnityEngine;
 
 public class EdAnimationScript : MonoBehaviour
 {
-    Animator edAnimator;
+    Animator EdAnimations;
     float speed = 2;
 
     // Start is called before the first frame update
     void Start()
     {
-        edAnimator = GetComponent<Animator>();
+        EdAnimations = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        edAnimator.SetBool("IsWalking", false);
-        edAnimator.SetBool("IsRunning", false);
-        edAnimator.SetBool("BackwardsWalk", false);
-        edAnimator.SetBool("BackwardsRun", false);
+        EdAnimations.SetBool("IsWalking", false);
+        EdAnimations.SetBool("IsRunning", false);
 
         if (Input.GetKey(KeyCode.W))
         {
             if (Input.GetKey(KeyCode.LeftShift))
             {
-                edAnimator.SetBool("IsRunning", true);
+                EdAnimations.SetBool("IsRunning", true);
                 speed = 1.5f;
             }
             else
             {
                 // make ed walk in animations and move forward
-                edAnimator.SetBool("IsWalking", true);
+                EdAnimations.SetBool("IsWalking", true);
                 speed = 1;
             }
             transform.position += speed * transform.forward * Time.deltaTime;
-        }
-        {
-            if (Input.GetKey(KeyCode.S))
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    edAnimator.SetBool("BackwardsRun", true);
-                    speed = 1.5f;
-                }
-                else
-                {
-                    edAnimator.SetBool("BackwardsWalk", true);
-                    speed = 1;
-                }
-                transform.position += speed * -transform.forward * Time.deltaTime;
-            }
         }
     }   
 }  
