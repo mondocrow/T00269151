@@ -8,9 +8,13 @@ public class myHeroScript : MonoBehaviour
     float runningSpeed = 3f;
     float turningSpeed = 45f;
     int coinsCollected = 0;
+    Animator EdAnimations;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        EdAnimations = GetComponent<Animator>();
         transform.position += new Vector3(0, 1, 0) * Time.deltaTime;
     }
 
@@ -50,6 +54,10 @@ public class myHeroScript : MonoBehaviour
         {
             coin.Collect();
             coinsCollected += 1;
+            if (coinsCollected > 2) 
+            {
+                EdAnimations.SetBool("Victory", true);
+            }
         }
     }
 }

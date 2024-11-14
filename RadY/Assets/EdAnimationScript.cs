@@ -19,7 +19,6 @@ public class EdAnimationScript : MonoBehaviour
     {
         EdAnimations.SetBool("IsWalking", false);
         EdAnimations.SetBool("IsRunning", false);
-
         if (Input.GetKey(KeyCode.W))
         {
             if (Input.GetKey(KeyCode.LeftShift))

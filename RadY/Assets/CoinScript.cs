@@ -9,7 +9,7 @@ public class CoinScript : MonoBehaviour
 
     internal void Collect()
     {
-        print("Ive been COllected");
+        print("Ive been Collected");
         Destroy(gameObject);
     }
 
